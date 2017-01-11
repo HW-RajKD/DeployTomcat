@@ -9,7 +9,7 @@ RUN apt-get install -y default-jdk
 # Install tomcat
 RUN apt-get install -y tomcat7
 
-RUN Which tomcat
+RUN which tomcat
 
 RUN /bin/startup.sh
 
