@@ -52,5 +52,5 @@ RUN rm -rf ${CATALINA_HOME}/webapps/*
 #RUN cp test.html ${CATALINA_HOME}/apache-tomcat-${TOMCAT_MINOR_VERSION}/webapps/
 
 EXPOSE 8080
-
+RUN ${CATALINA_HOME}/apache-tomcat-${TOMCAT_MINOR_VERSION}/bin/startup.sh && tail -f ${CATALINA_HOME}/apache-tomcat-${TOMCAT_MINOR_VERSION}/logs/catalina.out
 CMD ["catalina.sh", "run"]
