@@ -43,7 +43,7 @@ RUN mkdir -p ${CATALINA_HOME} \
 # Step-3(b) : Create Tomcat admin user	
 ADD create_tomcat_admin_user.sh ${CATALINA_HOME}/create_tomcat_admin_user.sh
 ADD run.sh ${CATALINA_HOME}/run
-RUN chmod +x /*.sh
+RUN chmod +x ${CATALINA_HOME}/*.sh
 RUN chmod +x ${CATALINA_HOME}/run
 
 # Step-4 : Deploy the war in tomcat
