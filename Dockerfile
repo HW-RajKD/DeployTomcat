@@ -49,6 +49,7 @@ ADD create_tomcat_admin_user.sh /create_tomcat_admin_user.sh
 
 # Step-4 : Deploy the war in tomcat
 RUN rm -rf ${CATALINA_HOME}/webapps/*
+RUN ls /home/
 RUN ls /etc/
 RUN ls /usr/lib/tomcat/
 RUN cp test.html /usr/local/tomcat/apache-tomcat-${TOMCAT_MINOR_VERSION}/webapps/
