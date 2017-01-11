@@ -1,4 +1,5 @@
 FROM tomcat:8.0
+FROM oracle-java8
 MAINTAINER "RAJ KUMAR DUBEY (rajkumar.dubey@heavywater.solutions)
 
 # Step-2 : Install Git
