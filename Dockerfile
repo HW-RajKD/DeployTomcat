@@ -1,7 +1,12 @@
 FROM ubuntu:12.04
+MAINTAINER RAJ KUMAR DUBEY (rajkumar.dubey@heavywater.solutions)
 
-# Step-1 : Install dependencies
+# Step-1(a) : Install dependencies
+RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
 RUN apt-get update -y
+
+# Step-1(b) : Install python-software-properties - This enables add-apt-repository for use later in the process.
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q python-software-properties software-properties-common
 
 # Step-2(a) : Install Oracle Java 8
 ENV JAVA_VER 8
