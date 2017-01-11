@@ -42,10 +42,10 @@ RUN mkdir -p /usr/lib/tomcat \
 	
 # Step-3(b) : Create Tomcat admin user	
 ADD create_tomcat_admin_user.sh /create_tomcat_admin_user.sh
-RUN mkdir /etc/service/${CATALINA_HOME}
-ADD run.sh /etc/service/${CATALINA_HOME}/run
-RUN chmod +x /*.sh
-RUN chmod +x /etc/service/${CATALINA_HOME}/run
+#RUN mkdir /etc/service/${CATALINA_HOME}
+#ADD run.sh /etc/service/${CATALINA_HOME}/run
+#RUN chmod +x /*.sh
+#RUN chmod +x /etc/service/${CATALINA_HOME}/run
 
 # Step-4 : Deploy the war in tomcat
 RUN rm -rf ${CATALINA_HOME}/webapps/*
