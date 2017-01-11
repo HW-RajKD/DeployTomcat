@@ -48,8 +48,8 @@ RUN chmod +x ${CATALINA_HOME}/run
 
 # Step-4 : Deploy the war in tomcat
 RUN rm -rf ${CATALINA_HOME}/webapps/*
-RUN sudo ls /home/ec2-user/
-RUN cp test.html ${CATALINA_HOME}/apache-tomcat-${TOMCAT_MINOR_VERSION}/webapps/
+#RUN sudo ls /home/ec2-user/
+#RUN cp test.html ${CATALINA_HOME}/apache-tomcat-${TOMCAT_MINOR_VERSION}/webapps/
 
 EXPOSE 8080
 
