@@ -33,7 +33,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 	
-RUN mkdir -p /usr/lib/tomcat \
+RUN mkdir -p ${CATALINA_HOME} \
   && wget -q https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz && \
 	wget -qO- https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz.md5 | md5sum -c - && \
 	tar zxf apache-tomcat-*.tar.gz && \
@@ -41,18 +41,15 @@ RUN mkdir -p /usr/lib/tomcat \
  	mv apache-tomcat* ${CATALINA_HOME}
 	
 # Step-3(b) : Create Tomcat admin user	
-ADD create_tomcat_admin_user.sh /create_tomcat_admin_user.sh
-#RUN mkdir /etc/service/${CATALINA_HOME}
-#ADD run.sh /etc/service/${CATALINA_HOME}/run
-#RUN chmod +x /*.sh
-#RUN chmod +x /etc/service/${CATALINA_HOME}/run
+ADD create_tomcat_admin_user.sh ${CATALINA_HOME}/create_tomcat_admin_user.sh
+ADD run.sh ${CATALINA_HOME}/run
+RUN chmod +x /*.sh
+RUN chmod +x ${CATALINA_HOME}/run
 
 # Step-4 : Deploy the war in tomcat
 RUN rm -rf ${CATALINA_HOME}/webapps/*
-RUN ls /home/
-RUN ls /etc/
-RUN ls /usr/lib/tomcat/
-RUN cp test.html /usr/local/tomcat/apache-tomcat-${TOMCAT_MINOR_VERSION}/webapps/
+ls /usr/local/
+RUN cp test.html ${CATALINA_HOME}/apache-tomcat-${TOMCAT_MINOR_VERSION}/webapps/
 
 EXPOSE 8080
 
