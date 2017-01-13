@@ -32,7 +32,7 @@ RUN wget http://ftp.riken.jp/net/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_
  rm apache-tomcat*.tar.gz && \
  mv apache-tomcat* ${CATALINA_HOME}
 
-RUN chmod +x ${CATALINA_HOME}/bin/start.sh
+RUN chmod +x ${CATALINA_HOME}/bin/*.sh
 
 WORKDIR /opt/tomcat
 
