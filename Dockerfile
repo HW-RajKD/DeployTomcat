@@ -35,8 +35,8 @@ RUN wget http://ftp.riken.jp/net/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_
 RUN chmod +x ${CATALINA_HOME}/bin/*sh
 
 # Create Tomcat admin user
-ADD create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
-ADD tomcat.sh $CATALINA_HOME/scripts/tomcat.sh
+ADD create_tomcat_admin_user.sh $CATALINA_HOME/scripts/create_tomcat_admin_user.sh
+ADD run.sh $CATALINA_HOME/scripts/run.sh
 RUN chmod +x $CATALINA_HOME/scripts/*.sh
 
 # Create tomcat user
@@ -50,4 +50,4 @@ EXPOSE 8080
 EXPOSE 8009
 
 USER tomcat
-CMD ["tomcat.sh"]
+CMD ["run.sh"]
