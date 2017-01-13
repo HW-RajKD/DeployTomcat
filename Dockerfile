@@ -32,22 +32,9 @@ RUN wget http://ftp.riken.jp/net/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_
  rm apache-tomcat*.tar.gz && \
  mv apache-tomcat* ${CATALINA_HOME}
 
-RUN chmod +x ${CATALINA_HOME}/bin/*sh
-
-# Create Tomcat admin user
-ADD create_tomcat_admin_user.sh $CATALINA_HOME/scripts/create_tomcat_admin_user.sh
-ADD run.sh $CATALINA_HOME/scripts/run.sh
-RUN chmod +x $CATALINA_HOME/scripts/*.sh
-
-# Create tomcat user
-RUN groupadd -r tomcat && \
- useradd -g tomcat -d ${CATALINA_HOME} -s /sbin/nologin  -c "Tomcat user" tomcat && \
- chown -R tomcat:tomcat ${CATALINA_HOME}
+RUN chmod +x ${CATALINA_HOME}/bin/start.sh
 
 WORKDIR /opt/tomcat
 
 EXPOSE 8080
 EXPOSE 8009
-
-USER tomcat
-CMD ["run.sh"]
